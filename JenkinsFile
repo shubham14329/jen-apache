@@ -12,7 +12,7 @@ pipeline{
 	stage("Copying to apache"){
 	    steps{
 	    	sh"""
-		sudo cp ./* /var/www/html/ 
+		sudo cp /root/shubham/jen-apache/* /var/www/html/ 
 		"""
 	    }
 	}
