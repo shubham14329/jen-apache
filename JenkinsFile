@@ -6,7 +6,7 @@ pipeline{
                 script {
                     def repoExists = false
                     try {
-                        sh """ls /var/lib/jenkins/workspace/jen-apache"""
+                        sh """ls /var/lib/jenkins/workspace/jen-apache1"""
                         repoExists = true
                     } 
                     catch (Exception e) {
@@ -24,7 +24,7 @@ pipeline{
         stage("Copying to apache") {
             steps {
                 sh """
-                sudo cp /var/lib/jenkins/workspace/jen-apache/*.html /var/www/html/
+                sudo cp /var/lib/jenkins/workspace/jen-apache1/*.html /var/www/html/
                 """
             }
         }
