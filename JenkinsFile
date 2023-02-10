@@ -13,10 +13,10 @@ pipeline{
                         repoExists = false
                     }
                     if (repoExists) {
-                        sh """sudo git /var/lib/jenkins/workspace/jen-apache pull https://github.com/shubham14329/jen-apache.git"""
+                        sh """sudo git pull https://github.com/shubham14329/jen-apache.git"""
                     } 
                     else {
-                        sh """sudo git clone https://github.com/shubham14329/jen-apache.git /var/lib/jenkins/workspace/jen-apache"""
+                        sh """sudo git clone https://github.com/shubham14329/jen-apache.git"""
                     }
                 }
             }
