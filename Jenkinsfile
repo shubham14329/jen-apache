@@ -14,12 +14,12 @@ pipeline{
                     }
                     if (repoExists) {
                         sh """
-                        sudo git pull https://github.com/shubham14329/jen-apache.git
+                        sudo git pull https://github.com/shubhzzz19/jen-apache.git
                         """
                     } 
                     else {
                         sh """
-                        sudo git clone https://github.com/shubham14329/jen-apache.git
+                        sudo git clone https://github.com/shubhzzz19/jen-apache.git
                         """
                     }
                 }
