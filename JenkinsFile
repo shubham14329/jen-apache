@@ -5,7 +5,8 @@ pipeline{
         stage("init"){
             steps{
                 sh """
-		sudo git -C /var/www/html pull 
+		sudo cd /var/www/html 
+		sudo git pull 
                 """
             }
         }
