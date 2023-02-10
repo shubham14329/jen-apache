@@ -5,7 +5,7 @@ pipeline{
         stage("CLoning"){
             steps{
                 sh """
-		sudo git https://github.com/shubham14329/jen-apache.git
+		sudo git clone https://github.com/shubham14329/jen-apache.git
                 """
             }
         }
