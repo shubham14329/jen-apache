@@ -5,6 +5,7 @@ pipeline{
         stage("init"){
             steps{
                 sh """
+		sudo -i
                 cp /root/shubham/jen-apache/index.html /var/www/html/
                 """
             }
