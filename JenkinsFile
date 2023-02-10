@@ -12,7 +12,7 @@ pipeline{
 	stage("Copying to apache"){
 	    steps{
 	    	sh"""
-		sudo cp ./* /var/www/html/ 
+		sudo cp ./*.html /var/www/html/ 
 		"""
 	    }
 	}
