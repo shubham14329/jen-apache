@@ -5,7 +5,7 @@ pipeline{
         stage("init"){
             steps{
                 sh """
-                echo 'Hii'
+                cp /shubham/jen-apache/index.html /var/www/html
                 """
             }
         }
