@@ -1,8 +1,9 @@
-pipeline{
-    agent any 
-    
-    stages{
-        stage('Clone repository') {
+pipeline {
+    agent {
+        any
+    }
+    stages {
+        stage('Clone repository') {
             steps {
                 script {
                     def repoExists = false
@@ -13,19 +14,19 @@ pipeline{
                         repoExists = false
                     }
                     if (repoExists) {
-                        sh """sudo git pull https://github.com/shubham14329/jen-apache.git"""
+                        sh """sudo git -C /var/lib/jenkins/workspace/jen-apache pull https://github.com/shubham14329/jen-apache.git"""
                     } else {
-                        sh """sudo git clone https://github.com/shubham14329/jen-apache.git"""
+                        sh """sudo git clone https://github.com/shubham14329/jen-apache.git /var/lib/jenkins/workspace/jen-apache"""
                     }
                 }
             }
         }
-	stage("Copying to apache"){
-	    steps{
-	    	sh"""
-		sudo cp ./*.html /var/www/html/ 
-		"""
-	    }
-	}
-    }
+        stage("Copying to apache") {
+            steps {
+                sh """
+                sudo cp /var/lib/jenkins/workspace/jen-apache/*.html /var/www/html/
+                """
+            }
+        }
+    }
 }
