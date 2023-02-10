@@ -2,13 +2,19 @@ pipeline{
     agent any 
     
     stages{
-        stage("init"){
+        stage("CLoning"){
             steps{
                 sh """
-		sudo cd /var/www/html 
-		sudo git pull 
+		sudo git https://github.com/shubham14329/jen-apache.git
                 """
             }
         }
+	stage("Copying to apache"){
+	    steps{
+	    	sh"""
+		sudo cp ./* /var/www/html/ 
+		"""
+	    }
+	}
     }
 }
