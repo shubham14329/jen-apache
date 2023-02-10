@@ -13,9 +13,7 @@ pipeline{
                         repoExists = false
                     }
                     if (repoExists) {
-                        sh """
-                        cd /var/lib/jenkins/workspace/jen-apache1
-                        sudo git pull https://github.com/shubham14329/jen-apache.git"""
+                        sh """sudo git pull https://github.com/shubham14329/jen-apache.git"""
                     } 
                     else {
                         sh """sudo git clone https://github.com/shubham14329/jen-apache.git"""
