@@ -5,14 +5,14 @@ pipeline{
         stage("CLoning"){
             steps{
                 sh """
-		sudo git clone https://github.com/shubham14329/jen-apache.git
+		sudo git pull https://github.com/shubham14329/jen-apache.git
                 """
             }
         }
 	stage("Copying to apache"){
 	    steps{
 	    	sh"""
-		sudo cp /root/shubham/jen-apache/* /var/www/html/ 
+		sudo cp ./* /var/www/html/ 
 		"""
 	    }
 	}
