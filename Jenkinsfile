@@ -27,11 +27,26 @@ pipeline{
         }
         stage('Deleting the previous container and image') {
             steps {
-                sh """
-                sudo docker stop apache-container
-                sudo docker rm apache-container
-                sudo docker image rm apache
-                """
+                script {
+                    def containerex = false
+                    try {
+                        sh """docker ps"""
+                        containerex = true
+                    } 
+                    catch (Exception e) {
+                        containerex = false
+                    }
+                    if (containerex) {
+                        sh """
+                        sudo docker stop apache-container
+                        sudo docker rm apache-container
+                        sudo docker image rm apache
+                        """
+                    } 
+                    else {
+                        sh 'sudo echo "Proceeded futher"'
+                    }
+                }
             }
         }
         stage('Checkout') {
