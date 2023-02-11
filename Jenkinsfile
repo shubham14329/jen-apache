@@ -25,6 +25,15 @@ pipeline{
                 }
             }
         }
+        stage('Deleting the previous container and image') {
+            steps {
+                sh """
+                sudo docker stop apache-container
+                sudo docker rm apache-container
+                sudo docker image rm apache
+                """
+            }
+        }
         stage('Checkout') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '47ba8edd-2db0-470e-9fe6-c6f26b724f8c', url: 'https://github.com/shubhzzz19/jen-apache.git']]])
