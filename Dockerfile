@@ -8,4 +8,4 @@ COPY . /usr/local/apache2/htdocs/
 EXPOSE 80
 
 # Start the Apache server as the default command
-CMD ["httpd-foreground"]
+#CMD ["httpd-foreground"]
