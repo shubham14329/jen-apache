@@ -25,11 +25,19 @@ pipeline{
                 }
             }
         }
-        stage("Copying to apache") {
+        stage('Checkout') {
             steps {
-                sh """
-                sudo cp /var/lib/jenkins/workspace/jen-apache1/*.html /var/www/html/
-                """
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '47ba8edd-2db0-470e-9fe6-c6f26b724f8c', url: 'https://github.com/shubhzzz19/jen-apache.git']]])
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -f Dockerfile -t apache .'
+            }
+        }
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -p 80:80 --name apache-container apache'
             }
         }
     }
