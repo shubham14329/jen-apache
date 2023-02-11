@@ -32,12 +32,12 @@ pipeline{
         }
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -d -f Dockerfile -t apache .'
+                sh 'docker build -f Dockerfile -t apache .'
             }
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -p 80:80 --name apache-container apache'
+                sh 'docker run -d -p 80:80 --name apache-container apache'
             }
         }
     }
