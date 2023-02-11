@@ -31,6 +31,7 @@ pipeline{
                     def containerex = false
                     try {
                         sh """docker ps"""
+                        
                         containerex = true
                     } 
                     catch (Exception e) {
