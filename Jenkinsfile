@@ -28,23 +28,14 @@ pipeline{
         stage('Deleting the previous container and image') {
             steps {
                 script {
-                    def containerex = false
                     try {
-                        sh """docker ps"""
-                        
-                        containerex = true
-                    } 
-                    catch (Exception e) {
-                        containerex = false
-                    }
-                    if (containerex) {
                         sh """
                         sudo docker stop apache-container
                         sudo docker rm apache-container
                         sudo docker image rm apache
                         """
                     } 
-                    else {
+                    catch (Exception e) {
                         sh 'sudo echo "Proceeded futher"'
                     }
                 }
